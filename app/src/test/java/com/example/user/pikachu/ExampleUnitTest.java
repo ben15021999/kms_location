@@ -1,4 +1,4 @@
-package com.example.user.kms;
+package com.example.user.pikachu;
 
 import org.junit.Test;
 

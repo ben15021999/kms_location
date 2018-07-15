@@ -1,9 +1,7 @@
-package com.example.user.kms;
+package com.example.user.pikachu;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
@@ -11,7 +9,6 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
-import android.graphics.Bitmap;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -22,7 +19,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -38,7 +34,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
-    private static final LatLng food1 = new LatLng(10.806566, 106.665140);
+    private static final LatLng food1 = new LatLng(10.806224, 106.665508);
+    private static final LatLng food2 = new LatLng(10.807579, 106.664688);
+    private static final LatLng food3 = new LatLng(10.808230, 106.6653703);
+    private static final LatLng food4 = new LatLng(10.806708, 106.664331);
+    private static final LatLng food5 = new LatLng(10.807411, 106.664371);
+    private static final LatLng food6 = new LatLng(10.806651, 106.665770);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,17 +124,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //Place current location marker
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        MarkerOptions markerOptions = new MarkerOptions();
+        /*MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
-        markerOptions.title("Your Position");
-        markerOptions.draggable(true);
-        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.food));
-        mCurrLocationMarker = mMap.addMarker(markerOptions);
-        Marker m1 = mMap.addMarker(new MarkerOptions().position(food1).anchor(.5f, .5f).title("food").snippet("Buscu").icon(BitmapDescriptorFactory.fromResource(R.drawable.food)));
+        markerOptions.title("Current Position");
+        mCurrLocationMarker = mMap.addMarker(markerOptions);*/
+        Marker m1 = mMap.addMarker(new MarkerOptions().position(food1).title("Địa điểm 1").snippet("Thông tin").icon(BitmapDescriptorFactory.fromResource(R.drawable.food)));
+        Marker m2 = mMap.addMarker(new MarkerOptions().position(food2).title("Địa điểm 2").snippet("Thông tin").icon(BitmapDescriptorFactory.fromResource(R.drawable.food)));
+        Marker m3 = mMap.addMarker(new MarkerOptions().position(food3).title("Địa điểm 3").snippet("Thông tin").icon(BitmapDescriptorFactory.fromResource(R.drawable.food)));
+        Marker m4 = mMap.addMarker(new MarkerOptions().position(food4).title("Địa điểm 4").snippet("Thông tin").icon(BitmapDescriptorFactory.fromResource(R.drawable.food)));
+        Marker m5 = mMap.addMarker(new MarkerOptions().position(food5).title("Địa điểm 5").snippet("Thông tin").icon(BitmapDescriptorFactory.fromResource(R.drawable.food)));
+        Marker m6 = mMap.addMarker(new MarkerOptions().position(food6).title("Địa điểm 6").snippet("Thông tin").icon(BitmapDescriptorFactory.fromResource(R.drawable.food)));
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(18));
 
         //stop location updates
         if (mGoogleApiClient != null) {
